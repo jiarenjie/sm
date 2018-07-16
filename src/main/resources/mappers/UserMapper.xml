@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.meiling.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.meiling.entity.User">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="count" jdbcType="REAL" property="count" />
+    <result column="no" jdbcType="REAL" property="no" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.meiling.entity.User">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into user (`name`, sex, `count`, 
+      `no`)
+    values (#{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{count,jdbcType=REAL}, 
+      #{no,jdbcType=REAL})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.meiling.entity.User">
+    update user
+    set `name` = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      `count` = #{count,jdbcType=REAL},
+      `no` = #{no,jdbcType=REAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, `name`, sex, `count`, `no`
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, `name`, sex, `count`, `no`
+    from user
+  </select>
+
+
+  <resultMap id="UserAndRoleMap" type="com.meiling.entity.User">
+    <id column="id"  property="id" />
+    <result column="name"  property="name" />
+    <result column="sex"  property="sex" />
+    <result column="count"  property="count" />
+    <result column="no"  property="no" />
+    <collection property="roles" resultMap="roleMap"/>
+  </resultMap>
+  <resultMap id="roleMap" type="com.meiling.entity.Role">
+    <id column="r_id" property="id"/>
+    <result column="role" property="role"/>
+    <result column="user_id" property="userId"/>
+  </resultMap>
+
+  <select id="selectUserAndRoleByPK" resultMap="UserAndRoleMap">
+      SELECT
+          u.id,
+          u.`name`,
+          u.sex,
+          u.`count`,
+          u.`no`,
+          r.role,
+          r.id r_id,
+          r.user_id
+      FROM
+          USER u
+      LEFT JOIN role r ON u.id = r.user_id
+      WHERE
+          u.id = #{id}
+  </select>
+</mapper>
