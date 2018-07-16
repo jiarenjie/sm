@@ -1,6 +1,7 @@
-package com.meiling.exceptions;
+package com.demo.exceptions;
 
-import com.meiling.enums.ResultEnum;
+
+import com.demo.enums.ResultEnum;
 
 /**
  * Created by jiarj on 2018-07-13.

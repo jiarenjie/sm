@@ -1,4 +1,4 @@
-package com.meiling.entity;
+package com.demo.entity;
 
 import java.io.Serializable;
 import java.util.List;

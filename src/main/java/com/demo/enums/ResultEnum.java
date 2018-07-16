@@ -1,4 +1,4 @@
-package com.meiling.enums;
+package com.demo.enums;
 
 /**
  * Created by jiarj on 2018-07-13.

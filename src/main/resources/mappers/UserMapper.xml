@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.meiling.mapper.UserMapper">
-  <resultMap id="BaseResultMap" type="com.meiling.entity.User">
+<mapper namespace="com.demo.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.demo.entity.User">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="sex" jdbcType="VARCHAR" property="sex" />
@@ -12,7 +12,7 @@
     delete from user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.meiling.entity.User">
+  <insert id="insert" parameterType="com.demo.entity.User">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -21,7 +21,7 @@
     values (#{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{count,jdbcType=REAL}, 
       #{no,jdbcType=REAL})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.meiling.entity.User">
+  <update id="updateByPrimaryKey" parameterType="com.demo.entity.User">
     update user
     set `name` = #{name,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=VARCHAR},
@@ -40,7 +40,7 @@
   </select>
 
 
-  <resultMap id="UserAndRoleMap" type="com.meiling.entity.User">
+  <resultMap id="UserAndRoleMap" type="com.demo.entity.User">
     <id column="id"  property="id" />
     <result column="name"  property="name" />
     <result column="sex"  property="sex" />
@@ -48,7 +48,7 @@
     <result column="no"  property="no" />
     <collection property="roles" resultMap="roleMap"/>
   </resultMap>
-  <resultMap id="roleMap" type="com.meiling.entity.Role">
+  <resultMap id="roleMap" type="com.demo.entity.Role">
     <id column="r_id" property="id"/>
     <result column="role" property="role"/>
     <result column="user_id" property="userId"/>

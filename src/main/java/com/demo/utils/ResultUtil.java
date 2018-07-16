@@ -1,6 +1,6 @@
-package com.meiling.utils;
+package com.demo.utils;
 
-import com.meiling.entity.Result;
+import com.demo.entity.Result;
 
 /**
  * Created by jiarj on 2018-07-13.

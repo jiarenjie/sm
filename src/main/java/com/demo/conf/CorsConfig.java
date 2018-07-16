@@ -1,4 +1,4 @@
-package com.meiling.conf;
+package com.demo.conf;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

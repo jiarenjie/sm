@@ -1,9 +1,9 @@
-package com.meiling.conf;
+package com.demo.conf;
 
-import com.meiling.ctl.TestCtl;
-import com.meiling.entity.Result;
-import com.meiling.exceptions.BusinessException;
-import com.meiling.utils.ResultUtil;
+import com.demo.ctl.TestCtl;
+import com.demo.entity.Result;
+import com.demo.exceptions.BusinessException;
+import com.demo.utils.ResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;

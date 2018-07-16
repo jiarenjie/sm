@@ -1,15 +1,13 @@
-package com.meiling.ctl;
+package com.demo.ctl;
 
+import com.demo.entity.Result;
+import com.demo.entity.User;
+import com.demo.enums.ResultEnum;
+import com.demo.exceptions.BusinessException;
+import com.demo.mapper.UserMapper;
+import com.demo.utils.ResultUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.meiling.mapper.UserMapper;
-import com.meiling.entity.Result;
-import com.meiling.entity.User;
-import com.meiling.entity.UserInfo;
-import com.meiling.enums.ResultEnum;
-import com.meiling.exceptions.BusinessException;
-import com.meiling.utils.ResultUtil;
-import com.meiling.utils.TokenUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 
 /**
  * @author 刘
@@ -33,14 +32,6 @@ public class TestCtl  {
     @Autowired(required = false)
     private UserMapper um;
 
-    @RequestMapping("/test")
-    public Result<Object> test(@RequestParam("accessToken") String token) {
-        UserInfo map = (UserInfo) TokenUtil.getUserInfoByToken(token, env);
-        if (map == null) {
-            return ResultUtil.errorToken();
-        }
-        return ResultUtil.success(map);
-    }
 
     @RequestMapping("/test1")
     public Result<Object> test1(@RequestParam(value = "pageNum",defaultValue ="0" ) Integer pageNum, @RequestParam(value ="pageSize",defaultValue ="0") Integer pageSize) {

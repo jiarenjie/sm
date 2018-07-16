@@ -1,4 +1,4 @@
-package com.meiling.entity;
+package com.demo.entity;
 
 /**
  * Created by jiarj on 2018-07-13.
