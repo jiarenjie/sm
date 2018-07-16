@@ -55,19 +55,9 @@
   </resultMap>
 
   <select id="selectUserAndRoleByPK" resultMap="UserAndRoleMap">
-      SELECT
-          u.id,
-          u.`name`,
-          u.sex,
-          u.`count`,
-          u.`no`,
-          r.role,
-          r.id r_id,
-          r.user_id
-      FROM
-          USER u
-      LEFT JOIN role r ON u.id = r.user_id
-      WHERE
-          u.id = #{id}
+    SELECT u.id,u.`name`,u.sex,u.`count`,u.`no`,r.role,r.id r_id,r.user_id
+    FROM user u
+    LEFT JOIN role r ON u.id = r.user_id
+    WHERE u.id = #{ id }
   </select>
 </mapper>
