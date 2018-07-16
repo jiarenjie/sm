@@ -24,6 +24,7 @@ import java.util.List;
  */
 @RestController
 @Transactional
+@RequestMapping("/test")
 public class TestCtl  {
     private static Logger LOGGER = LoggerFactory.getLogger(TestCtl.class);
     @Autowired
